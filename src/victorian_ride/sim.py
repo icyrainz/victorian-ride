@@ -399,6 +399,8 @@ class Drive:
     def step(self, dt: float, c: Controls) -> list:
         """Advance by dt (split into steps of at most 1/120 s). Returns the events."""
         out: list = []
+        if not dt > 0:
+            return out
         n = max(1, math.ceil(dt / (1 / 120)))
         for _ in range(n):
             self._step(dt / n, c, out)

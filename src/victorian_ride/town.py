@@ -71,7 +71,8 @@ class Town:
         self._ext: dict[tuple[int, int], float] = {}
         for e in self.edges:
             for n in (e.a, e.b):
-                others = [self._edge[frozenset((n, m))] for m in self.adj[n] if frozenset((n, m)) != frozenset((e.a, e.b))]
+                others = [self._edge[frozenset((n, m))] for m in self.adj[n]
+                          if frozenset((n, m)) != frozenset((e.a, e.b))]
                 self._ext[(id(e), n)] = max((o.street_hw for o in others), default=0.0)
 
     # --- geometry ---
